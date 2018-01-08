@@ -18,3 +18,9 @@ This is a text-based game I made in JavaScript (source code here: https://github
 
 *  Add a `while` statement to the `play_again()` function to where the game will ask if you want to play again until the player inputs "n." As of right now the question is only asked once and then the game stops.
 * Show a running tally of the score, so to speak, for each game the player plays.
+
+---
+
+## Various Challenges for the Complete Python Masterclass
+
+I'll upload my solutions to the challenges for the Python class I'm taking on Udemy. I do this to have a record of my solutions because sometimes I work on the challenges during my lunch break at work. It's easier to upload them to Github and continue to work on them at home since I'm working on two different computers.
