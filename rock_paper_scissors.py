@@ -14,11 +14,11 @@ def play_game():
     print("Make your selection:\nR = Rock\nP = Paper\nS = Scissors")
     # variable below takes the player's input and saves it and converts it to lower case
     player_selection = input("Enter your selection here: ").lower()
+
     # Invalid input from player
-    # This block of code logic is broken. Need to troubleshoot further
-    # if player_selection != "r" or "p" or "s":
-    #     print("\nThat is not a valid choice. Please choose \nR = Rock\nP = Paper\nS= Scissors")
-    #     player_selection = input("Enter your selection here: ").lower()
+    if player_selection != "r" and player_selection != "p" and player_selection != "s":
+        print("\nThat is not a valid choice. Please choose \nR = Rock\nP = Paper\nS= Scissors")
+        player_selection = input("Enter your selection here: ").lower()
 
     # This block of code determines the computer's selection using the random number generator
     computer_selection = ""
@@ -65,7 +65,7 @@ def play_game():
 
 # Play again function
 def play_game_again():
-    play_again = input("\nWould you like to play again?\n'Y' for yes or 'N' for no.\n").lower()
+    play_again = input("\nWould you like to play again?\n'Y' for yes or 'N' for no: ").lower()
     if play_again == "y":
         play_game()
     else:
