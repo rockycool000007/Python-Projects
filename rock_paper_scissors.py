@@ -30,16 +30,29 @@ def play_game():
     else:
         computer_selection = "Scissors"
 
+    player_tally = 0
+    computer_tally = 0
+
     # Rock section
     if player_selection == "r" and computer_selection == "Rock":
         print("The computer picks {}".format(computer_selection))
         print("It's a tie! Play again.")
+        player_tally += 0
+        computer_tally += 0
+        print("Games you won = {}".format(player_tally))
+        print("Games you lost = {}".format(computer_tally))
     elif player_selection == "r" and computer_selection == "Paper":
         print("The computer picks {}".format(computer_selection))
         print("Paper covers Rock. You lose!")
+        computer_tally += 1
+        print("Games you won = {}".format(player_tally))
+        print("Games you lost = {}".format(computer_tally))
     elif player_selection == "r" and computer_selection == "Scissors":
         print("The computer picks {}".format(computer_selection))
         print("Rock crushes scissors. You win!")
+        player_tally += 1
+        print("Games you won = {}".format(player_tally))
+        print("Games you lost = {}".format(computer_tally))
 
     # Paper section
     elif player_selection == "p" and computer_selection == "Paper":
@@ -63,8 +76,6 @@ def play_game():
         print("The computer picks {}".format(computer_selection))
         print("Scissors cut Paper. You win!")
 
-# Play again function
-def play_game_again():
     play_again = input("\nWould you like to play again?\n'Y' for yes or 'N' for no: ").lower()
     if play_again == "y":
         play_game()
@@ -72,4 +83,3 @@ def play_game_again():
         print("Thanks for playing!")
 
 play_game()
-play_game_again()
