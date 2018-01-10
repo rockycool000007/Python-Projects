@@ -1,6 +1,6 @@
 # Title: Rock, Paper, Scissors
 # Creator: Brittany Gates (github.com/bcgates82 / twitter.com/brittanygates82)
-# About: The player chooses either rock, paper or scissors to compete against the computer that randomly chooses rock, paper or scissors.
+# About: The player chooses either rock, paper or scissors against the computer.
 
 import random
 
@@ -9,7 +9,10 @@ print("Welcome to Rock, Paper, Scissors!\n")
 print("Rules:\nRock beats Scissors\nScissors beats Paper\nPaper beats Rock\n")
 
 # The function that runs the game
+
+
 def play_game():
+
     # ask for the player's selection
     print("Make your selection:\nR = Rock\nP = Paper\nS = Scissors")
     # variable below takes the player's input and saves it and converts it to lower case
@@ -21,8 +24,8 @@ def play_game():
         player_selection = input("Enter your selection here: ").lower()
 
     # This block of code determines the computer's selection using the random number generator
-    computer_selection = ""
-    random_num = random.randint(0,2)
+    computer_selection = " "
+    random_num = random.randint(0, 2)
     if random_num == 0:
         computer_selection = "Rock"
     elif random_num == 1:
@@ -30,29 +33,16 @@ def play_game():
     else:
         computer_selection = "Scissors"
 
-    player_tally = 0
-    computer_tally = 0
-
     # Rock section
     if player_selection == "r" and computer_selection == "Rock":
         print("The computer picks {}".format(computer_selection))
         print("It's a tie! Play again.")
-        player_tally += 0
-        computer_tally += 0
-        print("Games you won = {}".format(player_tally))
-        print("Games you lost = {}".format(computer_tally))
     elif player_selection == "r" and computer_selection == "Paper":
         print("The computer picks {}".format(computer_selection))
         print("Paper covers Rock. You lose!")
-        computer_tally += 1
-        print("Games you won = {}".format(player_tally))
-        print("Games you lost = {}".format(computer_tally))
     elif player_selection == "r" and computer_selection == "Scissors":
         print("The computer picks {}".format(computer_selection))
         print("Rock crushes scissors. You win!")
-        player_tally += 1
-        print("Games you won = {}".format(player_tally))
-        print("Games you lost = {}".format(computer_tally))
 
     # Paper section
     elif player_selection == "p" and computer_selection == "Paper":
@@ -81,5 +71,6 @@ def play_game():
         play_game()
     else:
         print("Thanks for playing!")
+
 
 play_game()
