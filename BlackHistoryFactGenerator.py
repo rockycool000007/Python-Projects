@@ -13,7 +13,7 @@ import random
 # The list containing the facts
 black_history_facts = [
     "Black History Month began as “Negro History Week,” which was created in 1926 by Carter G. Woodson.",
-    "Black History Month became a month-long event in 1976",
+    "Black History Month became a month-long event in 1976.",
     "The month of February was chosen for Black History Month to coincide with the birthdays "
     + "of Frederick Douglass and Abraham Lincoln.",
     "The National Association for the Advancement of Colored People (NAACP) was formed in 1908 " +
@@ -108,7 +108,7 @@ black_history_facts = [
 
 def random_fact():
     print("Welcome to the Black History Facts Generator!\n")
-    print("Fact: {}".format(random.choice(black_history_facts)))
+    print("Fact: {}".format(random.choice(black_history_facts)) + " #blackfactgenerator")
 
 
 random_fact()
