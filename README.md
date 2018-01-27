@@ -38,6 +38,12 @@ I'm going to not implement posting the facts to Twitter via an API because it re
 
 ---
 
+## Guess The Number
+
+This is a project I had an idea to do at work. Well, part of the project I learned and worked on while taking the Complete Python Masterclass and other parts of it I brainstormed at work. The objective of the game is to guess the random number within a certain number of tries. I added a twist thought: Various difficulties! There are 3 difficulties: Easy, Medium and Hard. The difficulties increase the number range and with the Medium and Hard difficulties, ups the number of tries.
+
+---
+
 ## Various Challenges for the Complete Python Masterclass
 
 I'll upload my solutions to the challenges for the Python class I'm taking on Udemy. I do this to have a record of my solutions because sometimes I work on the challenges during my lunch break at work. It's easier to upload them to Github and continue to work on them at home since I'm working on two different computers.
