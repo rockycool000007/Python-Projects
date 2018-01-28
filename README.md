@@ -49,9 +49,3 @@ I use the `random` class to generate the number to guess. The game runs using `i
 **Upcoming Improvements**
 * Improve the redunancy I have in the initial version. I'm not too sure how to use `globals` in Python yet so I'm reusing the same variables in each function for each difficulty.
 * Build a "Play Again" function. 
-
----
-
-## Various Challenges for the Complete Python Masterclass
-
-I'll upload my solutions to the challenges for the Python class I'm taking on Udemy. I do this to have a record of my solutions because sometimes I work on the challenges during my lunch break at work. It's easier to upload them to Github and continue to work on them at home since I'm working on two different computers.
