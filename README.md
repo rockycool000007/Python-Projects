@@ -24,7 +24,7 @@ This is a text-based game I made in JavaScript (source code here: https://github
 
 ## Black History Facts Generator
 
-This is a project I made in Febuary 2017 to provide random Black History Facts for my Twitter feed. I found myself looking up random facts online and thought there had to be a better way.
+This is a project I made in Febuary 2017 in JavaScript (source code here: https://github.com/bcgates82/js-projects) to provide random Black History Facts for my Twitter feed. I found myself looking up random facts online and thought there had to be a better way.
 
 The project was originally written in JavaScript and used an `array` to hold the facts, and displayed them randomly on a website using jQuery and the `random` and `Math` methods in JavaScript. In Python I'm still selecting the facts randomly using the `random` method.
 
