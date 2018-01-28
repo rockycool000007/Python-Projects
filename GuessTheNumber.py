@@ -9,8 +9,8 @@ print("Welcome to Guess The Number!")
 print()
 print("Rules: Guess the number within the given number of tries.")
 print("=" * 80)
-print("Difficulties:\n\n1) Easy: Numbers range from 1 to 10\n2) Medium: Numbers range from " +
-      "1 to 20\n3) Hard: Numbers range from 1 to 30")
+print("Difficulties:\n\n1) Easy: Tries = 3 | Numbers range from 1 to 10\n2) Medium: Tries = 5 | " +
+      "Numbers range from 1 to 20\n3) Hard: Tries = 5 | Numbers range from 1 to 30")
 print("=" * 80)
 difficulty = int(input("Choose your difficulty here: "))
 
@@ -21,7 +21,7 @@ def easy_diff():
     answer = random.randint(1, 10)
 
     # Difficulty statement
-    print("** Easy difficulty **")
+    print("** Easy difficulty **\nNumber range is 1 to 10\n")
 
     # Player's guess
     guess = int(input("Enter your guess here: "))
@@ -30,7 +30,7 @@ def easy_diff():
     tries = 0
 
     if guess == answer and tries == 0:
-        print("You guessed the number on the first try!")
+        print("Congrats! You guessed the number on the first try!")
     else:
         while guess != answer:
             if guess < answer:
@@ -55,7 +55,7 @@ def medium_diff():
     answer = random.randint(1, 20)
 
     # Difficulty statement
-    print("** Medium difficulty **")
+    print("** Medium difficulty **\nNumber range is 1 to 20\n")
 
     # Player's guess
     guess = int(input("Enter your guess here: "))
@@ -64,7 +64,7 @@ def medium_diff():
     tries = 0
 
     if guess == answer and tries == 0:
-        print("You guessed the number on the first try!")
+        print("Congrats! You guessed the number on the first try!")
     else:
         while guess != answer:
             if guess < answer:
@@ -89,7 +89,7 @@ def hard_diff():
     answer = random.randint(1, 30)
 
     # Difficulty statement
-    print("** Hard difficulty **")
+    print("** Hard difficulty **\nNumber range is 1 to 30\n")
 
     # Player's guess
     guess = int(input("Enter your guess here: "))
@@ -98,7 +98,7 @@ def hard_diff():
     tries = 0
 
     if guess == answer and tries == 0:
-        print("You guessed the number on the first try!")
+        print("Congrats! You guessed the number on the first try!")
     else:
         while guess != answer:
             if guess < answer:
