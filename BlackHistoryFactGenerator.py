@@ -109,7 +109,7 @@ black_history_facts = [
 def random_fact():
     print('=' * 100 + '\n')
     print('Welcome to the Black History Facts Generator!\n')
-    print('#BlackHistoryMonth Fact: {}'.format(random.choice(black_history_facts)) + ' #blackfactgenerator')
+    print('#BlackHistoryMonth Fact: {}'.format(random.choice(black_history_facts)))
     print('How was this fact generated? Learn here: https://github.com/bcgates82')
     print('\n' + '=' * 100)
 
