@@ -103,17 +103,17 @@ def hard_diff():
         while guess != answer:
             if guess < answer:
                 tries += 1
-                print("Please guess higher. You have {} tries left.".format(5 - tries))
+                print("\nPlease guess higher. You have {} tries left.".format(5 - tries))
             else:
                 tries += 1
-                print("Please guess lower. You have {} tries left.".format(5 - tries))
+                print("\nPlease guess lower. You have {} tries left.".format(5 - tries))
             guess = int(input())
             if guess == answer:
                 tries += 1
-                print("That's it! You guessed the number in {} tries!".format(tries))
+                print("\nThat's it! You guessed the number in {} tries!".format(tries))
                 break
             if tries == 4:
-                print("You ran out of tries. The number was {}. Game over!".format(answer))
+                print("\nYou ran out of tries. The number was {}. Game over!".format(answer))
                 break
 
 
@@ -124,3 +124,26 @@ elif difficulty == 2:
     medium_diff()
 elif difficulty == 3:
     hard_diff()
+
+
+# Function that gives the player a choice to play again
+def play_again():
+    play_choice = input("\nWould you like to play again? 'Y' for Yes or 'N' for No ").lower()
+    if play_choice == "y":
+        print("=" * 80)
+        print("Difficulties:\n\n1) Easy: Tries = 3 | Numbers range from 1 to 10\n2) Medium: Tries = 5 | " +
+              "Numbers range from 1 to 20\n3) Hard: Tries = 5 | Numbers range from 1 to 30")
+        print("=" * 80)
+        new_difficulty = int(input("Choose your difficulty here: "))
+
+        if new_difficulty == 1:
+            easy_diff()
+        elif new_difficulty == 2:
+            medium_diff()
+        elif new_difficulty == 3:
+            hard_diff()
+    else:
+        print("Thanks for playing!")
+
+
+play_again()
