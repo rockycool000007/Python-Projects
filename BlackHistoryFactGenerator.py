@@ -1,18 +1,20 @@
-# Title: Black History Facts Generator
-# Creator: Brittany Gates (github.com/bcgates82 / twitter.com/brittanygates82)
-# About: In celebration of Black History Month I've created a random Black History Facts generator.
-# Fact Sources:
-# http://www.history.com/topics/black-history/black-history-facts
-# http://www.history.com/topics/black-history/black-history-milestones
-# http://www.history.com/topics/black-history/booker-t-washington
-# http://www.history.com/topics/black-history/george-washington-carver
-# https://en.wikipedia.org/wiki/W._E._B._Du_Bois
+"""
+Title: Black History Facts Generator
+Creator: Brittany Gates (github.com/bcgates82 / twitter.com/brittanygates82)
+About: In celebration of Black History Month I've created a random Black History Facts generator.
+Fact Sources:
+http://www.history.com/topics/black-history/black-history-facts
+http://www.history.com/topics/black-history/black-history-milestones
+http://www.history.com/topics/black-history/booker-t-washington
+http://www.history.com/topics/black-history/george-washington-carver
+https://en.wikipedia.org/wiki/W._E._B._Du_Bois
+"""
 
 import random
 
 # The list containing the facts
 black_history_facts = [
-    'Black History Month began as “Negro History Week,” which was created in 1926 by Carter G. Woodson.',
+    'Black History Month began as "Negro History Week," which was created in 1926 by Carter G. Woodson.',
     'Black History Month became a month-long event in 1976.',
     'The month of February was chosen for Black History Month to coincide with the birthdays '
     + 'of Frederick Douglass and Abraham Lincoln.',
