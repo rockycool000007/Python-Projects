@@ -48,7 +48,7 @@ I use the `random` class to generate the number to guess. The game runs using `i
 
 **Upcoming Improvements**
 * Improve the redunancy I have in the initial version. I'm not too sure how to use `globals` in Python yet so I'm reusing the same variables in each function for each difficulty.
-* ~~Build a "Play Again" function. ~~
+* ~~Build a "Play Again" function.~~
 
 ---
 
