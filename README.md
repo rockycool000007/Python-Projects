@@ -57,3 +57,9 @@ I use the `random` class to generate the number to guess. The game runs using `i
 This is a project I had an idea a few days after starting my Python class but I didn't really work on it until after starting the `dictionaries` portion of the class. 
 
 The game uses a `dictionary` to contain the words which are the `keys` and each words' hint which are the `values`. Then I randomly choose each word for the game by using the `random` class, along with the `list` and `items` methods acting on the dictionary to obtain the key/value pair and placing it into the `answer` and `hint` variables. From there, a `while` statement runs the game until the player guesses the word or the player runs out of tries.
+
+---
+
+## Calculator
+
+This is a work-in-progress as I learn how to build a calculator with a Tkinter GUI in my Python class. I like Tkinter even though I think it's the CSS of the GUI world.
