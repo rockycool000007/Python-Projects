@@ -20,14 +20,25 @@ def rock():
 
     player_selection = 'r'
     if player_selection == 'r' and computer_selection == 'Rock':
-        print('The computer picks {}'.format(computer_selection))
-        print('It\'s a tie! Play again.')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nIt\'s a tie! Play again.')
+        winner.grid(row=3, column=0)
     elif player_selection == 'r' and computer_selection == 'Paper':
-        print('The computer picks {}'.format(computer_selection))
-        print('Paper covers Rock. You lose!')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nPaper covers Rock. You lose!')
+        winner.grid(row=3, column=0)
     elif player_selection == 'r' and computer_selection == 'Scissors':
-        print('The computer picks {}'.format(computer_selection))
-        print('Rock crushes scissors. You win!')
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nRock crushes scissors. You win!')
+        winner.grid(row=3, column=0)
 
 
 def paper():
@@ -75,8 +86,6 @@ def scissors():
 
 
 # def play_again():
-#     play_again = input('\nWould you like to play again?\n"Y" for yes or "N" for no: ').lower()
-#
 #     if play_again == 'y':
 #         play_game()
 #     else:
@@ -98,22 +107,20 @@ rules_text.set('Defeat the computer by making your selection below\n\nRules:\n' 
                'What is your choice? Click the button below.')
 rules.grid(row=0, column=0, columnspan=3)
 
-# The text bar that asks for the player's selection
-player_button_text = tkinter.StringVar()
-player_button = tkinter.Label(m_window, textvariable=player_button_text)
-player_button_text.set('')
-player_button.grid(row=1, column=0, columnspan=3)
-
 # The frame for the buttons
-button_frame = tkinter.Frame(m_window, relief='groove', borderwidth=3, background='black')
-button_frame.grid(row=1, column=0, sticky='ew', columnspan=3, rowspan=3)
+button_frame = tkinter.Frame(m_window, background='black')
+button_frame.grid(row=1, column=0, columnspan=3)
 
 # Player buttons
 rock_button = tkinter.Button(button_frame, text='Rock', command=rock)
 rock_button.grid(row=0, column=0)
-paper_button = tkinter.Button(button_frame, text='Paper')
+paper_button = tkinter.Button(button_frame, text='Paper', command=paper)
 paper_button.grid(row=0, column=1)
-scissors_button = tkinter.Button(button_frame, text='Scissors')
+scissors_button = tkinter.Button(button_frame, text='Scissors', command=scissors)
 scissors_button.grid(row=0, column=2)
+
+# The frame for the winner display text
+winner_frame = tkinter.Frame(m_window, background='black')
+winner_frame.grid(row=2, column=0, columnspan=3)
 
 m_window.mainloop()
