@@ -34,6 +34,7 @@ def rock():
                         '\nPaper covers Rock. You lose!')
         winner.grid(row=3, column=0)
     elif player_selection == 'r' and computer_selection == 'Scissors':
+        # The textbox that displays the winner
         winner_text = tkinter.StringVar()
         winner = tkinter.Label(winner_frame, textvariable=winner_text)
         winner_text.set('The computer picks {}'.format(computer_selection) +
@@ -53,14 +54,26 @@ def paper():
 
     player_selection = 'p'
     if player_selection == 'p' and computer_selection == 'Paper':
-        print('The computer picks {}'.format(computer_selection))
-        print('It\'s a tie! Play again.')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nIt\'s a tie! Play again.')
+        winner.grid(row=4, column=0)
     elif player_selection == 'p' and computer_selection == 'Rock':
-        print('The computer picks {}'.format(computer_selection))
-        print('Paper covers rock. You win!')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nPaper covers rock. You win!')
+        winner.grid(row=4, column=0)
     elif player_selection == 'p' and computer_selection == 'Scissors':
-        print('The computer picks {}'.format(computer_selection))
-        print('Scissors cut Paper. You lose!')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nScissors cut Paper. You lose!')
+        winner.grid(row=4, column=0)
 
 
 def scissors():
@@ -75,21 +88,26 @@ def scissors():
 
     player_selection = 's'
     if player_selection == 's' and computer_selection == 'Scissor':
-        print('The computer picks {}'.format(computer_selection))
-        print('It\'s a tie! Play again.')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nIt\'s a tie! Play again.')
+        winner.grid(row=5, column=0)
     elif player_selection == 's' and computer_selection == 'Rock':
-        print('The computer picks {}'.format(computer_selection))
-        print('Rock crushes Scissors. You lose!')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nRock crushes Scissors. You lose!')
+        winner.grid(row=5, column=0)
     elif player_selection == 's' and computer_selection == 'Paper':
-        print('The computer picks {}'.format(computer_selection))
-        print('Scissors cut Paper. You win!')
-
-
-# def play_again():
-#     if play_again == 'y':
-#         play_game()
-#     else:
-#         print('Thanks for playing!')
+        # The textbox that displays the winner
+        winner_text = tkinter.StringVar()
+        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner_text.set('The computer picks {}'.format(computer_selection) +
+                        '\nScissors cut Paper. You win!')
+        winner.grid(row=5, column=0)
 
 
 m_window = tkinter.Tk()
