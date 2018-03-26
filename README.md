@@ -29,6 +29,8 @@ This is a project I made in Febuary 2017 in JavaScript (source code here: https:
 
 The project was originally written in JavaScript and used an `array` to hold the facts, and displayed them randomly on a website using jQuery and the `random` and `Math` methods in JavaScript. In Python I'm still selecting the facts randomly using the `random` method.
 
+* 3/25/18: I'm making a GUI version for the program using Tkinter
+
 **Upcoming Improvements**
 
 * ~~Develop a layout for the facts. Right now it's very bare-bones~~
