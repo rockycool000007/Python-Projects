@@ -18,9 +18,14 @@ def rock():
     else:
         computer_selection = 'Scissors'
 
+    global winner_frame
+
     player_selection = 'r'
     if player_selection == 'r' and computer_selection == 'Rock':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
         winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
                                foreground='white', font='bold')
@@ -29,6 +34,9 @@ def rock():
         winner.grid(row=3, column=0)
     elif player_selection == 'r' and computer_selection == 'Paper':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
         winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
                                foreground='white', font='bold')
@@ -37,6 +45,9 @@ def rock():
         winner.grid(row=3, column=0)
     elif player_selection == 'r' and computer_selection == 'Scissors':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
         winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
                                foreground='white', font='bold')
@@ -55,28 +66,42 @@ def paper():
     else:
         computer_selection = 'Scissors'
 
+    global winner_frame
+
     player_selection = 'p'
     if player_selection == 'p' and computer_selection == 'Paper':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
-        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
+                               foreground='white', font='bold')
         winner_text.set('The computer picks {}'.format(computer_selection) +
                         '\nIt\'s a tie! Play again.')
-        winner.grid(row=4, column=0)
+        winner.grid(row=3, column=0)
     elif player_selection == 'p' and computer_selection == 'Rock':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
-        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
+                               foreground='white', font='bold')
         winner_text.set('The computer picks {}'.format(computer_selection) +
                         '\nPaper covers rock. You win!')
-        winner.grid(row=4, column=0)
+        winner.grid(row=3, column=0)
     elif player_selection == 'p' and computer_selection == 'Scissors':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
-        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
+                               foreground='white', font='bold')
         winner_text.set('The computer picks {}'.format(computer_selection) +
                         '\nScissors cut Paper. You lose!')
-        winner.grid(row=4, column=0)
+        winner.grid(row=3, column=0)
 
 
 def scissors():
@@ -89,52 +114,61 @@ def scissors():
     else:
         computer_selection = 'Scissors'
 
+    global winner_frame
+
     player_selection = 's'
     if player_selection == 's' and computer_selection == 'Scissors':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
-        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
+                               foreground='white', font='bold')
         winner_text.set('The computer picks {}'.format(computer_selection) +
                         '\nIt\'s a tie! Play again.')
-        winner.grid(row=5, column=0)
+        winner.grid(row=3, column=0)
     elif player_selection == 's' and computer_selection == 'Rock':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
-        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
+                               foreground='white', font='bold')
         winner_text.set('The computer picks {}'.format(computer_selection) +
                         '\nRock crushes Scissors. You lose!')
-        winner.grid(row=5, column=0)
+        winner.grid(row=3, column=0)
     elif player_selection == 's' and computer_selection == 'Paper':
         # The textbox that displays the winner
+        winner_frame.destroy()
+        winner_frame = tkinter.Frame(m_window, background='black')
+        winner_frame.grid(row=3, column=0, columnspan=3)
         winner_text = tkinter.StringVar()
-        winner = tkinter.Label(winner_frame, textvariable=winner_text)
+        winner = tkinter.Label(winner_frame, textvariable=winner_text, background='black',
+                               foreground='white', font='bold')
         winner_text.set('The computer picks {}'.format(computer_selection) +
                         '\nScissors cut Paper. You win!')
-        winner.grid(row=5, column=0)
+        winner.grid(row=3, column=0)
 
 
 m_window = tkinter.Tk()
 
 # Setup the main window and frames for the player and computer player
 m_window.title('Rock, Paper, Scissors')
-m_window.geometry('300x400')
+m_window.geometry('265x300-800-400')  # Creates an offset to put the window in the middle of the monitor
 m_window.configure(background='black')
-
-# The background image for the main window
-# bg_image = tkinter.PhotoImage(file='rock_paper_scissors_scaled.gif')
-# background_label = tkinter.Label(m_window, image=bg_image)
-# background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 # The frame for the message section
 message_frame = tkinter.Frame(m_window)
-message_frame.grid(row=1, column=0, columnspan=4)
+message_frame.grid(row=1, column=0, columnspan=3)
 
 # The message section at the top that displays the rules
 rules_text = tkinter.StringVar()
 rules = tkinter.Message(m_window, textvariable=rules_text, justify='center', background='black',
                         foreground='white', font='bold')
 rules_text.set('Rules:\nRock beats Scissors\nScissors beat Paper\nPaper beats Rock\n\n' +
-               'Click on your battle piece below!')
+               'Click on your piece below!')
 rules.grid(row=0, column=0)
 
 # The frame for the buttons
