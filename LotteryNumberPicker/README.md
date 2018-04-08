@@ -7,7 +7,7 @@ I created two versions:
 * A Georgia Lottery version
 * A "generic" version for other states
 
-To keep from generating duplicate numbers in games that won't allow duplicates, I staggered the ranges in the `random.randint`. I can improve this by maybe implementing a `for-loop` but I'm still working out the logic.
+To keep from generating duplicate numbers in games that won't allow duplicates, I staggered the ranges in the `random.randint`. ~I can improve this by maybe implementing a `for-loop` but I'm still working out the logic.~ Looks like that thought was wrong. Some testing I ran today using this idea didn't work like I wanted. So for now I'm going to keep the ranges staggered.
 
 ### Changes / Updates
 
