@@ -57,8 +57,8 @@ def fantasy_5():
     num4 = random.randint(30, 36)
     num5 = random.randint(37, 42)
     num_list = sorted([num1, num2, num3, num4, num5])
-    print('Your Fantasy 5 Numbers: {} {} {} {} {}'.format(num_list[0], num_list[1], num_list[2], +
-                                                          num_list[3], num_list[4]))
+    print('Your Fantasy 5 Numbers: {} {} {} {} {}'.format(num_list[0], num_list[1], num_list[2], num_list[3],
+                                                          num_list[4]))
     generate_again = input('\nGenerate more winning numbers for this game? ')
     if generate_again == 'y' or generate_again == 'yes':
         fantasy_5()
@@ -83,10 +83,8 @@ def mega_millions():
     num5 = random.randint(60, 70)
     mega_ball = random.randint(1, 25)
     num_list = sorted([num1, num2, num3, num4, num5])
-    print('Your Mega Millions Numbers: {} {} {} {} {} [{}]'.format(num_list[0], +
-                                                                   num_list[1], num_list[2], +
-                                                                   num_list[3], num_list[4], +
-                                                                   mega_ball))
+    print('Your Mega Millions Numbers: {} {} {} {} {} [{}]'.format(num_list[0], num_list[1], num_list[2], num_list[3],
+                                                                   num_list[4], mega_ball))
     generate_again = input('\nGenerate more winning numbers for this game? ')
     if generate_again == 'y' or generate_again == 'yes':
         mega_millions()
@@ -111,8 +109,7 @@ def powerball():
     num5 = random.randint(58, 69)
     power_ball = random.randint(1, 26)
     num_list = sorted([num1, num2, num3, num4, num5])
-    print('Your Powerball Numbers: {} {} {} {} {} [{}]'.format(num_list[0], num_list[1], +
-                                                               num_list[2], num_list[3], +
+    print('Your Powerball Numbers: {} {} {} {} {} [{}]'.format(num_list[0], num_list[1], num_list[2], num_list[3],
                                                                num_list[4], power_ball))
     generate_again = input('\nGenerate more winning numbers for this game? ')
     if generate_again == 'y' or generate_again == 'yes':
@@ -137,8 +134,7 @@ def jumbo_bucks_lotto():
     num5 = random.randint(36, 41)
     num6 = random.randint(42, 47)
     num_list = sorted([num1, num2, num3, num4, num5, num6])
-    print('Your Jumbo Bucks Lotto Numbers: {} {} {} {} {} {}'.format(num_list[0], num_list[1], +
-                                                                     num_list[2], num_list[3], +
+    print('Your Jumbo Bucks Lotto Numbers: {} {} {} {} {} {}'.format(num_list[0], num_list[1], num_list[2], num_list[3],
                                                                      num_list[4], num_list[5]))
     generate_again = input('\nGenerate more winning numbers for this game? ')
     if generate_again == 'y' or generate_again == 'yes':
