@@ -16,11 +16,19 @@ import random
 
 # The function that displays a random fact
 def random_fact():
-    print('=' * 100 + '\n')
-    print('Welcome to the Black History Facts Generator!\n')
-    print('#BlackHistoryMonth Fact: {}'.format(random.choice(black_history_facts)))
-    print('How was this fact generated? Learn here: https://github.com/bcgates82')
-    print('\n' + '=' * 100)
+
+    global fact_frame
+
+    random.choice(black_history_facts)
+    fact_frame.destroy()
+    # The facts frame
+    fact_frame = tkinter.Frame(m_window)
+    fact_frame.grid(row=2, column=0)
+    # The text bar displaying the facts
+    fact_display = tkinter.Message(fact_frame, text=random.choice(black_history_facts) +
+                                   '\n\nHow was this fact generated? Learn here: '
+                                   ' https://github.com/bcgates82')
+    fact_display.grid(row=0, column=0)
 
 
 # The list containing the facts
@@ -118,8 +126,6 @@ black_history_facts = [
     'Barack Obama was inaugurated the first black U.S. President in 2009.'
 ]
 
-random_fact()
-
 m_window = tkinter.Tk()
 
 # Setup the main window and frames for the facts
@@ -136,7 +142,17 @@ button_frame = tkinter.Frame(m_window)
 button_frame.grid(row=1, column=0)
 
 # The button to display more facts
-fact_button = tkinter.Button(button_frame, text='Next Fact')
+fact_button = tkinter.Button(button_frame, text='Next Fact', command=random_fact)
 fact_button.grid(row=2, column=1)
+
+# The facts frame
+fact_frame = tkinter.Frame(m_window)
+fact_frame.grid(row=2, column=0)
+
+# The text bar displaying the initial fact
+initial_fact_display = tkinter.Message(fact_frame, text=random.choice(black_history_facts) +
+                                       '\n\nHow was this fact generated? Learn here: '
+                                       ' https://github.com/bcgates82')
+initial_fact_display.grid(row=0, column=0)
 
 m_window.mainloop()
