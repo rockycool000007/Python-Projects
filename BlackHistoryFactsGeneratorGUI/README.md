@@ -13,7 +13,11 @@ The project was originally written in JavaScript and used an `array` to hold the
 * 4/4/18:
    - This is still a work in progress. I started on this program but stopped several times to work on other programs.
 
+* 4/30/18:
+   - Changed the program to show an initial fact using tkinter's `Message` module. Upon pressing the "Next Fact" button, a new fact shows up.
+
 ### Bugs
 
-* None that I know of at this time
+* 4/30/18:
+   - Need to change / correct the window sizing
 
