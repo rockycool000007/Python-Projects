@@ -30,18 +30,17 @@ class Player:
 
     # need to make the attack subtract damage from the Enemy class.
     def attack(self):
-        random_num = random.randint(1, 4)
-        if random_num >= 2:
-            print('-- You attacked but missed! --\n')
+        random_num = random.randint(1, 10)
+        if random_num <= 4:
+            print('-- Your attack misses! --\n')
         else:
-            print('-- You attacked and was successful, doing {0.damage_dealt} points of '
+            print('-- Your attack is successful, doing {0.damage_dealt} points of '
                   'damage! --\n'.format(self))
-            # Enemy.take_damage()
-            return True
+            a_bat.take_damage(10)
 
     def take_damage(self, damage):
         self.hitpoints = self.hitpoints - damage
-        print('!! You took {} points of damage. You have {} '
+        print('!! You take {} points of damage. You have {} '
               'hitpoints left. !!\n'.format(damage, self.hitpoints))
 
 
@@ -56,7 +55,8 @@ class Enemy:
         damage_dealt (int): How much damage the enemy causes when it hits the player with their attack
 
     Methods:
-        take_damage(): 
+        take_damage(): This function uses the attack() function from the Player super class to determine
+        how much damage is done to the enemy. If the hitpoints are below 0, then the enemy dies.
     """
 
     def __init__(self, name, hitpoints, damage_dealt):
@@ -65,15 +65,15 @@ class Enemy:
         self.damage_dealt = damage_dealt
 
     def take_damage(self, damage):
-        if player.attack() == True:
-            remaining_points = self.hitpoints - damage
-            if remaining_points >= 1:
-                self.hitpoints = remaining_points
-                print('You took {} points of damage. You have {} hitpoints '
-                      'left.\n'.format(damage, self.hitpoints))
-            else:
-                self.hitpoints = remaining_points
-                print('{0.name is dead}'.format(self))
+        remaining_points = self.hitpoints - damage
+        if remaining_points == 0:
+            self.hitpoints = remaining_points
+            print('{0.name} is dead'.format(self))
+        else:
+            self.hitpoints = remaining_points
+            print('{0.name} takes {1} points of damage. {0.name} has {0.hitpoints} '
+                  'hitpoints left.\n'.format(self, damage))
+            player.attack()
 
 
 # Enemy subclass
@@ -98,10 +98,6 @@ class Bat(Enemy):
         else:
             print('\n** The {0.name} attacks and bites you! **\n'.format(self))
             player.take_damage(2)
-
-    def take_damage(self, damage):
-        super().take_damage(10)
-        print('You took {} points of damage. You have {} hitpoints left.\n'.format(damage, self.hitpoints))
 
 
 # Title screen
