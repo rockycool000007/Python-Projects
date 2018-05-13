@@ -18,7 +18,7 @@ class Player:
         damage_dealt (int): How much damage the player causes when it hits an enemy with their sword.
 
     Methods:
-        attack(): This function attacks the various Enemy characters, and shows how much damage was done
+        attack_bat(): This function attacks the bat Enemy character, and shows how much damage was done
         if the attack is successful.
 
         take_damage(): This function subtracts damage from the player, shows how much damage was done to
@@ -30,14 +30,33 @@ class Player:
         self.damage_dealt = damage_dealt
 
     def attack_bat(self):
-        random_num = random.randint(1, 10)
-        if random_num <= 4:
-            print('-- Your attack misses! --\n')
-            a_bat.bite()
-        else:
-            print('-- Your attack is successful, doing {0.damage_dealt} points of '
-                  'damage! --\n'.format(self))
-            a_bat.take_damage(10)
+        if a_bat.hitpoints > 1:
+            random_num = random.randint(1, 10)
+            if random_num <= 4:
+                print('-- Your attack misses! --\n')
+                sleep(3)
+                a_bat.bite()
+            else:
+                print('-- Your attack is successful, doing {0.damage_dealt} points of '
+                      'damage! --\n'.format(self))
+                sleep(3)
+                a_bat.bat_take_damage(10)
+
+    @staticmethod
+    def attack_troll():
+        if a_troll.hitpoints > 1:
+            random_num = random.randint(1, 10)
+            if random_num <= 4:
+                print('-- Your attack misses! --\n')
+                sleep(3)
+                a_troll.punch()
+            else:
+                if a_troll.block() is True:
+                    sleep(3)
+                    a_troll.troll_take_damage(0)
+                else:
+                    sleep(3)
+                    a_troll.troll_take_damage(10)
 
     def take_damage(self, damage):
         self.hitpoints = self.hitpoints - damage
@@ -57,8 +76,12 @@ class Enemy:
         damage_dealt (int): How much damage the enemy causes when it hits the player with their attack
 
     Methods:
-        take_damage(): This function uses the attack() function from the Player super class to determine
-        how much damage is done to the enemy. If the hitpoints are below 0, then the enemy dies.
+        bat_take_damage(): This function uses the attack() function from the Player super class to determine
+        how much damage is done to the bat enemy. If the hitpoints are below 0, then the bat dies.
+
+        troll_take_damage(): This function uses the attack() function from the Player super class to
+        determine how much damage is done to the troll enemy. If the hitpoints are below 0, then the
+        troll dies.
     """
 
     def __init__(self, name, hitpoints, damage_dealt):
@@ -66,11 +89,11 @@ class Enemy:
         self.hitpoints = hitpoints
         self.damage_dealt = damage_dealt
 
-    def take_damage(self, damage):
+    def bat_take_damage(self, damage):
         remaining_points = self.hitpoints - damage
         if remaining_points <= 0:
             self.hitpoints = remaining_points
-            print('{0.name} is dead'.format(self))
+            print('{0.name} is dead.'.format(self))
             sleep(3)
         else:
             self.hitpoints = remaining_points
@@ -78,6 +101,19 @@ class Enemy:
                   'hitpoints left.\n'.format(self, damage))
             sleep(3)
             player.attack_bat()
+
+    def troll_take_damage(self, damage):
+        remaining_points = self.hitpoints - damage
+        if remaining_points <= 0:
+            self.hitpoints = remaining_points
+            print('{0.name} is dead.\n'.format(self))
+            sleep(3)
+        else:
+            self.hitpoints = remaining_points
+            print('{0.name} takes {1} points of damage. {0.name} has {0.hitpoints} '
+                  'hitpoints left.\n'.format(self, damage))
+            sleep(3)
+            a_troll.punch()
 
 
 # Enemy subclass
@@ -102,7 +138,7 @@ class Bat(Enemy):
             sleep(3)
             player.attack_bat()
         else:
-            print('\n** The {0.name} attacks and bites you! **\n'.format(self))
+            print('\n** The {0.name} bites you! **\n'.format(self))
             sleep(3)
             player.take_damage(2)
 
@@ -115,7 +151,9 @@ class Troll(Enemy):
     Methods:
         punch(): This function is used to attack the player. Using a random number, the troll may
         or may not punch the player. It calls the take_damage() function in the Player super class to
-        remove hitpoints from the player
+        remove hitpoints from the player.
+        block(): This function determines whether the Troll blocks the player's attack, hence
+        not taking damage.
     """
 
     def __init__(self, name):
@@ -125,9 +163,22 @@ class Troll(Enemy):
         random_num = random.randint(1, 5)
         if random_num <= 3:
             print('\n** The {0.name} tries to punch you but misses! **\n'.format(self))
+            sleep(3)
+            player.attack_troll()
         else:
-            print('\n** The {0.name} attacks and punches you! **\n'.format(self))
+            print('\n** The {0.name} punches you! **\n'.format(self))
+            sleep(3)
             player.take_damage(5)
+            player.attack_troll()
+
+    def block(self):
+        random_num = random.randint(1, 6)
+        if random_num <= 2:
+            print('** {0.name} tries to block your attack but fails. **\n'.format(self))
+            return False
+        else:
+            print('** The {0.name} blocks your attack! **\n'.format(self))
+            return True
 
 
 # Title screen
@@ -196,3 +247,12 @@ sleep(3)
 print('\nYou enter the door, hearing the familiar noise of the door closing behind you. '
       'Then you hear an unfamiliar noise.')
 sleep(3)
+print('\nA {0.name} has his back to you, hunched over something. But when the {0.name} sees the '
+      'flicker of your torch light he turns around.'.format(a_troll))
+sleep(3)
+print('\nThe {0.name} screams and rushes toward you!'.format(a_troll))
+sleep(3)
+a_troll.punch()
+player.attack_troll()
+
+# Third decision = 2 Doors: Left or Right
