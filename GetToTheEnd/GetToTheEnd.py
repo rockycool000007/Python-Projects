@@ -29,16 +29,15 @@ class Player:
         self.hitpoints = hitpoints
         self.damage_dealt = damage_dealt
 
-    # need to work on this function because it's attacking both enemies.
-    def attack(self):
+    def attack_bat(self):
         random_num = random.randint(1, 10)
         if random_num <= 4:
             print('-- Your attack misses! --\n')
+            a_bat.bite()
         else:
             print('-- Your attack is successful, doing {0.damage_dealt} points of '
                   'damage! --\n'.format(self))
             a_bat.take_damage(10)
-            a_troll.take_damage(10)
 
     def take_damage(self, damage):
         self.hitpoints = self.hitpoints - damage
@@ -69,7 +68,7 @@ class Enemy:
 
     def take_damage(self, damage):
         remaining_points = self.hitpoints - damage
-        if remaining_points == 0:
+        if remaining_points <= 0:
             self.hitpoints = remaining_points
             print('{0.name} is dead'.format(self))
             sleep(3)
@@ -78,7 +77,7 @@ class Enemy:
             print('{0.name} takes {1} points of damage. {0.name} has {0.hitpoints} '
                   'hitpoints left.\n'.format(self, damage))
             sleep(3)
-            player.attack()
+            player.attack_bat()
 
 
 # Enemy subclass
@@ -101,6 +100,7 @@ class Bat(Enemy):
         if random_num <= 3:
             print('\n** The {0.name} tries to bite you but misses! **\n'.format(self))
             sleep(3)
+            player.attack_bat()
         else:
             print('\n** The {0.name} attacks and bites you! **\n'.format(self))
             sleep(3)
@@ -169,7 +169,7 @@ if first_branch == 1:
           'bat swoops out of the corner toward you!')
     sleep(3)
     a_bat.bite()
-    player.attack()
+    player.attack_bat()
 # Right door leads to finding a chest with food inside
 elif first_branch == 2:
     print('\nYou enter the right door and hear it close behind you.\nYou see an object in the right '
