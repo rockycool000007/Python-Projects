@@ -255,4 +255,30 @@ sleep(3)
 a_troll.punch()
 player.attack_troll()
 
+# Troll's treasure chest
+print('\nWith the {0.name} dead, see what the {0.name} was hunched over: A chest!'.format(a_troll))
+sleep(3)
+print('\nThe chest is locked with a padlock. You search around for a key.')
+sleep(3)
+print('\nNot finding one, you check the {0.name}\'s body but can\'t find key on its carcass. '
+      'Do want to pry the chest open with your sword?\n1) Yes\n2) No'.format(a_troll))
+sleep(3)
+pry_chest = int(input('\nEnter the number of your choice here: '))
+if pry_chest == 1:
+    print('\nIt takes some doing but you are able to break the padlock and open the chest!\n'
+          'Inside you find beef jerky and bread. You sit next to the chest and eat the food.')
+    sleep(3)
+    player.hitpoints += 20
+    print('\nUpon standing and gathering your things, you discover prying open the chest damaged '
+          'your sword. It now deals 8 points of damage.')
+    player.damage_dealt = 8
+elif pry_chest == 2:
+    print('\nYou leave the chest alone and decide to keep moving, hoping to finally get to the end.')
+    sleep(3)
+# Add a test for an else statement for the open chest if the player inputs something wrong
+# else:
+
 # Third decision = 2 Doors: Left or Right
+print('\nWalking to the end of the room, you find two doors:\n1) Left\n2) Right')
+sleep(3)
+third_branch = int(input('\nWhich door do you choose? Enter the number of your choice here: '))

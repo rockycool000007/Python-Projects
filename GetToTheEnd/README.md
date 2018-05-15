@@ -8,6 +8,10 @@ This project is a text-base adventure game where you fight monsters in various r
 
 ### Changes / Updates
 
+* 5/14/18:
+   - Created the decision on whether to open the treasure after defeating the troll.
+   - Started working on the third branch of the dungeon
+
 * 5/13/18:
    - Corrected some incorrectly formed logic that was causing the game to attack both enemies at once.
    - Added a test to both the `attack_bat()` and `attack_troll()` methods so if the Bat's and Troll's hitpoints are less than 1, the methods will not run.
@@ -17,4 +21,5 @@ This project is a text-base adventure game where you fight monsters in various r
 
 ### Bugs
 
-* None at this time.
+* 5/14/18:
+   - Not exactly a bug, but I need to create validation and/or tests for the `else` statements to catch if the player inputs a wrong number. I haven't figured out the logic for that yet.
