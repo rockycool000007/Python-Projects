@@ -42,8 +42,7 @@ class Player:
                 sleep(3)
                 a_bat.bat_take_damage(10)
 
-    @staticmethod
-    def attack_troll():
+    def attack_troll(self):
         if a_troll.hitpoints > 1:
             random_num = random.randint(1, 10)
             if random_num <= 4:
@@ -56,7 +55,28 @@ class Player:
                     a_troll.troll_take_damage(0)
                 else:
                     sleep(3)
+                    print('-- Your attack is successful, doing {0.damage_dealt} points of '
+                          'damage! --\n'.format(self))
+                    sleep(3)
                     a_troll.troll_take_damage(10)
+
+    def attack_slime(self):
+        if a_slime.hitpoints > 1:
+            random_num = random.randint(1, 10)
+            if random_num <= 4:
+                print('-- Your attack misses! --\n')
+                sleep(3)
+                a_slime.acid_attack()
+            else:
+                if a_slime.split() is True:
+                    sleep(3)
+                    a_slime.slime_take_damage(0)
+                else:
+                    sleep(3)
+                    print('-- Your attack is successful, doing {0.damage_dealt} points of '
+                          'damage! --\n'.format(self))
+                    sleep(3)
+                    a_slime.slime_take_damage(10)
 
     def take_damage(self, damage):
         self.hitpoints = self.hitpoints - damage
@@ -82,6 +102,10 @@ class Enemy:
         troll_take_damage(): This function uses the attack() function from the Player super class to
         determine how much damage is done to the troll enemy. If the hitpoints are below 0, then the
         troll dies.
+
+        slime_take_damage(): This function uses the attack() function from the Player super class to
+        determine how much damage is done to the slime enemy. If the hitpoints are below 0, then the
+        slime dies.
     """
 
     def __init__(self, name, hitpoints, damage_dealt):
@@ -114,6 +138,19 @@ class Enemy:
                   'hitpoints left.\n'.format(self, damage))
             sleep(3)
             a_troll.punch()
+
+    def slime_take_damage(self, damage):
+        remaining_points = self.hitpoints - damage
+        if remaining_points <= 0:
+            self.hitpoints = remaining_points
+            print('{0.name} is dead.\n'.format(self))
+            sleep(3)
+        else:
+            self.hitpoints = remaining_points
+            print('{0.name} takes {1} points of damage. {0.name} has {0.hitpoints} '
+                  'hitpoints left.\n'.format(self, damage))
+            sleep(3)
+            a_slime.acid_attack()
 
 
 # Enemy subclass
@@ -181,6 +218,44 @@ class Troll(Enemy):
             return True
 
 
+class Slime(Enemy):
+
+    """
+    This is the Slime class that inherits attributes from the Enemy super class
+
+    Methods:
+        acid_attack(): This function is used to attack the player. Using a random number,
+        the slime blob may or may not bite the player. It calls the take_damage() function in
+        the Player super class to remove hitpoints from the player.
+        split(): This function determines whether the Slime blocks the player's attack, hence
+        not taking damage.
+    """
+
+    def __init__(self, name):
+        super().__init__(name=name, hitpoints=40, damage_dealt=5)
+
+    def acid_attack(self):
+        random_num = random.randint(1, 4)
+        if random_num <= 2:
+            print('\n** The {0.name} throws acid at you but misses! **\n'.format(self))
+            sleep(3)
+            player.attack_slime()
+        else:
+            print('\n** The {0.name} throws acid on you! **\n'.format(self))
+            sleep(3)
+            player.take_damage(6)
+            player.attack_slime()
+
+    def split(self):
+        random_num = random.randint(1, 6)
+        if random_num <= 2:
+            print('** {0.name} tries to split itself to dodge your attack but fails. **\n'.format(self))
+            return False
+        else:
+            print('** The {0.name} splits in half and dodges your attack! **\n'.format(self))
+            return True
+
+
 # Title screen
 print('=' * 16 + '\n')
 print('Get To The End')
@@ -193,6 +268,7 @@ player = Player()
 # Enemy character creation
 a_bat = Bat('Bat')
 a_troll = Troll('Troll')
+a_slime = Slime('Slime Blob')
 
 # Introduction
 print('\nYou wake up with a start on the floor. You felt something run across your boots.\nYou look around'
@@ -282,3 +358,14 @@ elif pry_chest == 2:
 print('\nWalking to the end of the room, you find two doors:\n1) Left\n2) Right')
 sleep(3)
 third_branch = int(input('\nWhich door do you choose? Enter the number of your choice here: '))
+
+if third_branch == 1:
+    print('\nYou enter the left door and hear it close behind you. You see drops of liquid falling '
+          'from the ceiling.')
+    sleep(3)
+    print('\nYou hold our your hand to catch some of the liquid, but it burns your palm.\nThen you '
+          'hear a sloshing sound. As it gets closer and closer, you hold our your torch to see.')
+    sleep(3)
+    print('\nA {0.name} oozes from the darkness toward you!'.format(a_slime))
+    a_slime.acid_attack()
+    player.attack_slime()

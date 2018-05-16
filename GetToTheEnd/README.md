@@ -8,9 +8,14 @@ This project is a text-base adventure game where you fight monsters in various r
 
 ### Changes / Updates
 
+* 5/15/18:
+   - Created the `Slime` class along with the new Slime Blob that the player has to fight.
+   - Started work on the third branch of rooms for the player.
+   - Changed the `attack_troll` static method to a regular method because I forgot that I need to show the amount of damage dealt from the player.
+
 * 5/14/18:
    - Created the decision on whether to open the treasure after defeating the troll.
-   - Started working on the third branch of the dungeon
+   - Started working on the third branch of the dungeon.
 
 * 5/13/18:
    - Corrected some incorrectly formed logic that was causing the game to attack both enemies at once.
