@@ -18,8 +18,8 @@ class Player:
         damage_dealt (int): How much damage the player causes when it hits an enemy with their sword.
 
     Methods:
-        attack_bat(): This function attacks the bat Enemy character, and shows how much damage was done
-        if the attack is successful.
+        attack_bat(), attack_troll(), attack_slime(), attack_skeleton(): This function attacks the
+        various enemies, and shows how much damage was done if the attack is successful.
 
         take_damage(): This function subtracts damage from the player, shows how much damage was done to
         the player and displays how many hitpoints are left.
@@ -78,6 +78,19 @@ class Player:
                     sleep(3)
                     a_slime.slime_take_damage(10)
 
+    def attack_skeleton(self):
+        if a_skeleton.hitpoints > 1:
+            random_num = random.randint(1, 10)
+            if random_num <= 4:
+                print('-- Your attack misses! --\n')
+                sleep(3)
+                a_skeleton.bone_throw()
+            else:
+                print('-- Your attack is successful, doing {0.damage_dealt} points of '
+                      'damage! --\n'.format(self))
+                sleep(3)
+                a_skeleton.skeleton_take_damage(10)
+
     def take_damage(self, damage):
         self.hitpoints = self.hitpoints - damage
         print('!! You take {} points of damage. You have {} '
@@ -96,16 +109,11 @@ class Enemy:
         damage_dealt (int): How much damage the enemy causes when it hits the player with their attack
 
     Methods:
-        bat_take_damage(): This function uses the attack() function from the Player super class to determine
-        how much damage is done to the bat enemy. If the hitpoints are below 0, then the bat dies.
-
-        troll_take_damage(): This function uses the attack() function from the Player super class to
-        determine how much damage is done to the troll enemy. If the hitpoints are below 0, then the
-        troll dies.
-
-        slime_take_damage(): This function uses the attack() function from the Player super class to
-        determine how much damage is done to the slime enemy. If the hitpoints are below 0, then the
-        slime dies.
+        bat_take_damage(), troll_take_damage(), slime_take_damage(), skeleton_take_damage(): These
+        methods uses the attack() method from the Player super class to determine
+        how much damage is done to the various enemies. If the hitpoints are less than or equal to 0,
+        then the attack method doesn't run. This is to keep the attack method from running one final time
+        when the enemy dies.
     """
 
     def __init__(self, name, hitpoints, damage_dealt):
@@ -151,6 +159,19 @@ class Enemy:
                   'hitpoints left.\n'.format(self, damage))
             sleep(3)
             a_slime.acid_attack()
+
+    def skeleton_take_damage(self, damage):
+        remaining_points = self.hitpoints - damage
+        if remaining_points <= 0:
+            self.hitpoints = remaining_points
+            print('{0.name} is dead.\n'.format(self))
+            sleep(3)
+        else:
+            self.hitpoints = remaining_points
+            print('{0.name} takes {1} points of damage. {0.name} has {0.hitpoints} '
+                  'hitpoints left.\n'.format(self, damage))
+            sleep(3)
+            a_skeleton.bone_throw()
 
 
 # Enemy subclass
@@ -256,6 +277,32 @@ class Slime(Enemy):
             return True
 
 
+class Skeleton(Enemy):
+    """
+    This is the Skeleton class that inherits attributes from the Enemy super class
+
+    Methods:
+        bone_throw(): This function is used to attack the player. Using a random number,
+        the skeleton may or may not hit the player with a bone. It calls the take_damage()
+        function in the Player super class to remove hitpoints from the player.
+    """
+
+    def __init__(self, name):
+        super().__init__(name=name, hitpoints=40, damage_dealt=5)
+
+    def bone_throw(self):
+        random_num = random.randint(1, 4)
+        if random_num <= 2:
+            print('\n** The {0.name} throws a bone at you but misses! **\n'.format(self))
+            sleep(3)
+            player.attack_skeleton()
+        else:
+            print('\n** The {0.name} hits you with a bone! **\n'.format(self))
+            sleep(3)
+            player.take_damage(5)
+            player.attack_skeleton()
+
+
 # Title screen
 print('=' * 16 + '\n')
 print('Get To The End')
@@ -269,6 +316,7 @@ player = Player()
 a_bat = Bat('Bat')
 a_troll = Troll('Troll')
 a_slime = Slime('Slime Blob')
+a_skeleton = Skeleton('Skeleton')
 
 # Introduction
 print('\nYou wake up with a start on the floor. You felt something run across your boots.\nYou look around'
@@ -369,3 +417,14 @@ if third_branch == 1:
     print('\nA {0.name} oozes from the darkness toward you!'.format(a_slime))
     a_slime.acid_attack()
     player.attack_slime()
+elif third_branch == 2:
+    print('\nYou enter the right door and hear it close behind you. As you take a step forward '
+          'a bone flies by your face!')
+    sleep(3)
+    print('\nA {0.name} walks around the room, pulling bones off of its body, throwing them '
+          'at you!'.format(a_skeleton))
+    sleep(3)
+    a_skeleton.bone_throw()
+    player.attack_skeleton()
+# Add a test for an else statement for the open chest if the player inputs something wrong
+# else:
