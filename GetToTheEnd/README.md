@@ -8,8 +8,13 @@ This project is a text-base adventure game where you fight monsters in various r
 
 ### Changes / Updates
 
+* 5/16/18:
+   - Created the `Skeleton` class along with the new Skeleton enemy the player has to fight.
+   - Finished the third branch of the rooms for the player.
+   - Updated the doc strings for the Player and Enemy super classes to encompass all of the methods used.
+
 * 5/15/18:
-   - Created the `Slime` class along with the new Slime Blob that the player has to fight.
+   - Created the `Slime` class along with the new Slime Blob enemy the player has to fight.
    - Started work on the third branch of rooms for the player.
    - Changed the `attack_troll` static method to a regular method because I forgot that I need to show the amount of damage dealt from the player.
 
