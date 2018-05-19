@@ -8,6 +8,10 @@ This project is a text-base adventure game where you fight monsters in various r
 
 ### Changes / Updates
 
+* 5/19/18:
+   - Created the `Doppelganger` class along with the new Doppelganger enemy the play has to fight (this is the final enemy or final boss).
+   - Updated the doc strings for the Player and Enemy super classes to encompass all of the methods used.
+
 * 5/16/18:
    - Created the `Skeleton` class along with the new Skeleton enemy the player has to fight.
    - Finished the third branch of the rooms for the player.
