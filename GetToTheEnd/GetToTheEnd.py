@@ -18,8 +18,9 @@ class Player:
         damage_dealt (int): How much damage the player causes when it hits an enemy with their sword.
 
     Methods:
-        attack_bat(), attack_troll(), attack_slime(), attack_skeleton(): This function attacks the
-        various enemies, and shows how much damage was done if the attack is successful.
+        attack_bat(), attack_troll(), attack_slime(), attack_skeleton(), attack_doppelganger():
+        These methods attacks the various enemies, and shows how much damage was done if the attack
+        is successful.
 
         take_damage(): This function subtracts damage from the player, shows how much damage was done to
         the player and displays how many hitpoints are left.
@@ -91,6 +92,19 @@ class Player:
                 sleep(3)
                 a_skeleton.skeleton_take_damage(10)
 
+    def attack_doppelganger(self):
+        if a_doppelganger.hitpoints > 1:
+            random_num = random.randint(1, 10)
+            if random_num <= 4:
+                print('-- Your attack misses! --\n')
+                sleep(3)
+                a_doppelganger.all_attacks()
+            else:
+                print('-- Your attack is successful, doing {0.damage_dealt} points of '
+                      'damage! --\n'.format(self))
+                sleep(3)
+                a_doppelganger.doppelganger_take_damage(10)
+
     def take_damage(self, damage):
         self.hitpoints = self.hitpoints - damage
         print('!! You take {} points of damage. You have {} '
@@ -109,11 +123,11 @@ class Enemy:
         damage_dealt (int): How much damage the enemy causes when it hits the player with their attack
 
     Methods:
-        bat_take_damage(), troll_take_damage(), slime_take_damage(), skeleton_take_damage(): These
-        methods uses the attack() method from the Player super class to determine
-        how much damage is done to the various enemies. If the hitpoints are less than or equal to 0,
-        then the attack method doesn't run. This is to keep the attack method from running one final time
-        when the enemy dies.
+        bat_take_damage(), troll_take_damage(), slime_take_damage(), skeleton_take_damage(),
+        doppelganger_take_damage(): These methods uses the attack() method from the Player super
+        class to determine how much damage is done to the various enemies. If the hitpoints are
+        less than or equal to 0, then the attack method doesn't run. This is to keep the attack
+        method from running one final time when the enemy dies.
     """
 
     def __init__(self, name, hitpoints, damage_dealt):
@@ -172,6 +186,19 @@ class Enemy:
                   'hitpoints left.\n'.format(self, damage))
             sleep(3)
             a_skeleton.bone_throw()
+
+    def doppelganger_take_damage(self, damage):
+        remaining_points = self.hitpoints - damage
+        if remaining_points <= 0:
+            self.hitpoints = remaining_points
+            print('{0.name} is dead.\n'.format(self))
+            sleep(3)
+        else:
+            self.hitpoints = remaining_points
+            print('{0.name} takes {1} points of damage. {0.name} has {0.hitpoints} '
+                  'hitpoints left.\n'.format(self, damage))
+            sleep(3)
+            a_doppelganger.all_attacks()
 
 
 # Enemy subclass
@@ -303,6 +330,53 @@ class Skeleton(Enemy):
             player.attack_skeleton()
 
 
+class Doppelganger(Enemy):
+    """
+    This is the Doppelganger class that inherits attributes from the Enemy super class
+
+    Methods:
+        Takes the following methods from the other Enemy characters: bite(), punch(), acid_attack(),
+        bone_throw().
+    """
+
+    def __init__(self, name):
+        super().__init__(name=name, hitpoints=100, damage_dealt=8)
+
+    def all_attacks(self):
+        random_num = random.randint(1, 6)
+        if random_num == 1:
+            print('\n** The {0.name} morphs into a bat and bites you! **'.format(self))
+            sleep(3)
+            player.take_damage(2)
+            player.attack_doppelganger()
+        elif random_num == 2:
+            print('\n** The {0.name} attacks you with a sword, dealing {0.damage_dealt} points of '
+                  'damage **'.format(self))
+            sleep(3)
+            player.take_damage(8)
+            player.attack_doppelganger()
+        elif random_num == 3:
+            print('\n** The {0.name} tries to morph but fails. **'.format(self))
+            sleep(3)
+            player.take_damage(0)
+            player.attack_doppelganger()
+        elif random_num == 4:
+            print('\n** The {0.name} morphs into a troll and punches you! **'.format(self))
+            sleep(3)
+            player.take_damage(5)
+            player.attack_doppelganger()
+        elif random_num == 5:
+            print('\n** The {0.name} morphs into a slime blob and throws acid on you! **\n'.format(self))
+            sleep(3)
+            player.take_damage(5)
+            player.attack_doppelganger()
+        else:
+            print('\n** The {0.name} morphs into a skeleton and hits you with a bone! **\n'.format(self))
+            sleep(3)
+            player.take_damage(5)
+            player.attack_doppelganger()
+
+
 # Title screen
 print('=' * 16 + '\n')
 print('Get To The End')
@@ -317,6 +391,7 @@ a_bat = Bat('Bat')
 a_troll = Troll('Troll')
 a_slime = Slime('Slime Blob')
 a_skeleton = Skeleton('Skeleton')
+a_doppelganger = Doppelganger('Doppelganger')
 
 # Introduction
 print('\nYou wake up with a start on the floor. You felt something run across your boots.\nYou look around'
@@ -428,3 +503,27 @@ elif third_branch == 2:
     player.attack_skeleton()
 # Add a test for an else statement for the open chest if the player inputs something wrong
 # else:
+
+# The Doppelganger
+print('\nWalking to the end of the room, you find a single door in the center of the room.')
+sleep(3)
+print('\nA bright light pours through the door. You hesitate to enter.')
+sleep(3)
+print('\n"WHY DO YOU NOT ENTER? DO YOU FEAR TO FACE ME?"')
+sleep(3)
+print('\nYou take several steps back from the door, drawing your sword.')
+sleep(3)
+print('\n"COME THROUGH THE DOOR AND FACE ME!"')
+sleep(3)
+print('\nYou don\'t move.')
+sleep(3)
+print('\n"FINE! I\'LL COME TO YOU!"')
+sleep(3)
+print('\nA figure enters through the single door, the door slamming shut behind it.')
+sleep(3)
+print('\nAs the figure enters into your view, you see the figure looks just like you!\nThe {0.name} '
+      'has the same clothes as you, the same satchel and even the same sword.'.format(a_doppelganger))
+sleep(3)
+print('\n"I WILL END THIS NOW!"')
+a_doppelganger.all_attacks()
+player.attack_doppelganger()
