@@ -8,6 +8,9 @@ This project is a text-base adventure game where you fight monsters in various r
 
 ### Changes / Updates
 
+* 5/20/18:
+   - I created the validation and/or tests for the `else` statements when the player had to make a decision to catch if the player inputs an invalid number. I did this by creating functions for the two room branches and using a `while` loop in the `else` statement to catch wrong inputs.
+
 * 5/19/18:
    - Created the `Doppelganger` class along with the new Doppelganger enemy the play has to fight (this is the final enemy or final boss).
    - Updated the doc strings for the Player and Enemy super classes to encompass all of the methods used.
@@ -36,4 +39,4 @@ This project is a text-base adventure game where you fight monsters in various r
 ### Bugs
 
 * 5/14/18:
-   - Not exactly a bug, but I need to create validation and/or tests for the `else` statements to catch if the player inputs a wrong number. I haven't figured out the logic for that yet.
+   ~~- Not exactly a bug, but I need to create validation and/or tests for the `else` statements to catch if the player inputs a wrong number. I haven't figured out the logic for that yet.~~
