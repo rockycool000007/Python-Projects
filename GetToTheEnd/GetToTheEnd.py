@@ -411,37 +411,56 @@ sleep(7)
 print('The door slides to a close behind you. Leaving you a choice between two doors:\n1) Left\n2) Right\n')
 sleep(5)
 
-# First decision = 2 Doors: Left or Right
-first_branch = int(input('Which door do you choose? Enter the number of your choice here: '))
-# Left door leads to fighting a bat
-if first_branch == 1:
-    print('\nYou enter the left door and hear it close behind you. As you take a few steps forward, a '
-          'bat swoops out of the corner toward you!')
-    sleep(3)
-    a_bat.bite()
-    player.attack_bat()
-# Right door leads to finding a chest with food inside
-elif first_branch == 2:
-    print('\nYou enter the right door and hear it close behind you.\nYou see an object in the right '
-          'corner and walk cautiously to it. You see it\'s a chest. Do you open it?\n'
-          '1) Yes\n2) No\n')
-    open_chest = int(input('Enter the number of your choice here: '))
-    if open_chest == 1:
-        print('\nYou find a loaf of bread inside. You kneel next to the chest and eat the bread.')
-        sleep(3)
-        player.hitpoints += 10
-        print('\nYour hitpoints are now {0.hitpoints}.'.format(player))
-    elif open_chest == 2:
-        print('\nLeery of the bread, you close the chest, deciding not to eat it.')
-        sleep(3)
-    # Add a test for an else statement for the open chest if the player inputs something wrong
-    # else:
-# Add a test for an else statement for the first branch if the player inputs something wrong
-# else:
 
-# Second decision = 1 Door: Center
-print('\nWith the {0.name} dead, you step over the carcass to see one door in the center '
-      'of the room.'.format(a_bat))
+# First decision to choose between 2 doors: Left or Right
+def first_branch_decision():
+    first_branch = int(input('Which door do you choose? Enter the number of your choice here: '))
+    # Left door leads to fighting a bat
+    if first_branch == 1:
+        print('\nYou enter the left door and hear it close behind you. As you take a few steps forward, a '
+              'bat swoops out of the corner toward you!')
+        sleep(3)
+        a_bat.bite()
+        player.attack_bat()
+    # Right door leads to finding a chest with food inside
+    elif first_branch == 2:
+        print('\nYou enter the right door and hear it close behind you.\nYou see an object in the right '
+              'corner and walk cautiously to it. You see it\'s a chest. Do you open it?\n'
+              '1) Yes\n2) No\n')
+        open_chest = int(input('Enter the number of your choice here: '))
+        if open_chest == 1:
+            print('\nYou find a loaf of bread inside. You kneel next to the chest and eat the bread.')
+            sleep(3)
+            player.hitpoints += 10
+            print('\nYour hitpoints are now {0.hitpoints}.'.format(player))
+        elif open_chest == 2:
+            print('\nLeery of the chest, and what could be inside of it, you decide not to open it.')
+        # A loop to prompt again for the open_chest code block if the player inputs something wrong
+        else:
+            while open_chest != 1 or 2:
+                open_chest = int(input('\nIncorrect input. Enter "1" or "2" to continue: '))
+                if open_chest == 1:
+                    print('\nYou find a loaf of bread inside. You kneel next to the chest and eat the bread.')
+                    sleep(3)
+                    player.hitpoints += 10
+                    print('\nYour hitpoints are now {0.hitpoints}.'.format(player))
+                    break
+                elif open_chest == 2:
+                    print('\nLeery of the chest, and what could be inside of it, you decide not to open it.')
+                    break
+    # A loop to prompt again for the first_branch_decision() if the player inputs something wrong
+    else:
+        while first_branch != 1 or 2:
+            print('\nIncorrect input. Enter "1" or "2"\n')
+            first_branch_decision()
+            break
+
+
+first_branch_decision()
+
+# Hallway leading to 1 center door, which leads to fighting a troll
+sleep(3)
+print('\nWalking further, you see one door in the center of the room.')
 sleep(3)
 print('\nYou enter the door, hearing the familiar noise of the door closing behind you. '
       'Then you hear an unfamiliar noise.')
@@ -454,7 +473,7 @@ sleep(3)
 a_troll.punch()
 player.attack_troll()
 
-# Troll's treasure chest
+# The troll's treasure and another decision for the player to make
 print('\nWith the {0.name} dead, see what the {0.name} was hunched over: A chest!'.format(a_troll))
 sleep(3)
 print('\nThe chest is locked with a padlock. You search around for a key.')
@@ -474,37 +493,61 @@ if pry_chest == 1:
 elif pry_chest == 2:
     print('\nYou leave the chest alone and decide to keep moving, hoping to finally get to the end.')
     sleep(3)
-# Add a test for an else statement for the open chest if the player inputs something wrong
-# else:
+# A loop to prompt again for the open_chest code block if the player inputs something wrong
+else:
+    while pry_chest != 1 or 2:
+        pry_chest = int(input('\nIncorrect input. Enter "1" or "2" to continue: '))
+        if pry_chest == 1:
+            print('\nIt takes some doing but you are able to break the padlock and open the chest!\n'
+                  'Inside you find beef jerky and bread. You sit next to the chest and eat the food.')
+            sleep(3)
+            player.hitpoints += 20
+            print('\nUpon standing and gathering your things, you discover prying open the chest damaged '
+                  'your sword. It now deals 8 points of damage.')
+            player.damage_dealt = 8
+            break
+        elif pry_chest == 2:
+            print('\nYou leave the chest alone and decide to keep moving, hoping to finally get to the end.')
+            sleep(3)
+            break
 
-# Third decision = 2 Doors: Left or Right
+# Second decision to choose between 2 doors: Left or Right
 print('\nWalking to the end of the room, you find two doors:\n1) Left\n2) Right')
 sleep(3)
-third_branch = int(input('\nWhich door do you choose? Enter the number of your choice here: '))
 
-if third_branch == 1:
-    print('\nYou enter the left door and hear it close behind you. You see drops of liquid falling '
-          'from the ceiling.')
-    sleep(3)
-    print('\nYou hold our your hand to catch some of the liquid, but it burns your palm.\nThen you '
-          'hear a sloshing sound. As it gets closer and closer, you hold our your torch to see.')
-    sleep(3)
-    print('\nA {0.name} oozes from the darkness toward you!'.format(a_slime))
-    a_slime.acid_attack()
-    player.attack_slime()
-elif third_branch == 2:
-    print('\nYou enter the right door and hear it close behind you. As you take a step forward '
-          'a bone flies by your face!')
-    sleep(3)
-    print('\nA {0.name} walks around the room, pulling bones off of its body, throwing them '
-          'at you!'.format(a_skeleton))
-    sleep(3)
-    a_skeleton.bone_throw()
-    player.attack_skeleton()
-# Add a test for an else statement for the open chest if the player inputs something wrong
-# else:
 
-# The Doppelganger
+def second_branch_decision():
+    second_branch = int(input('\nWhich door do you choose? Enter the number of your choice here: '))
+    if second_branch == 1:
+        print('\nYou enter the left door and hear it close behind you. You see drops of liquid falling '
+              'from the ceiling.')
+        sleep(3)
+        print('\nYou hold our your hand to catch some of the liquid, but it burns your palm.\nThen you '
+              'hear a sloshing sound. As it gets closer and closer, you hold our your torch to see.')
+        sleep(3)
+        print('\nA {0.name} oozes from the darkness toward you!'.format(a_slime))
+        a_slime.acid_attack()
+        player.attack_slime()
+    elif second_branch == 2:
+        print('\nYou enter the right door and hear it close behind you. As you take a step forward '
+              'a bone flies by your face!')
+        sleep(3)
+        print('\nA {0.name} walks around the room, pulling bones off of its body, throwing them '
+              'at you!'.format(a_skeleton))
+        sleep(3)
+        a_skeleton.bone_throw()
+        player.attack_skeleton()
+    # A loop to prompt again for the second_branch_decision() if the player inputs something wrong
+    else:
+        while second_branch != 1 or 2:
+            print('\nIncorrect input. Enter "1" or "2"\n')
+            second_branch_decision()
+            break
+
+
+second_branch_decision()
+
+# The final boss: The Doppelganger
 print('\nWalking to the end of the room, you find a single door in the center of the room.')
 sleep(3)
 print('\nA bright light pours through the door. You hesitate to enter.')
