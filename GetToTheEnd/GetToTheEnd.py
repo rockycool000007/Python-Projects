@@ -570,3 +570,40 @@ sleep(3)
 print('\n"I WILL END THIS NOW!"')
 a_doppelganger.all_attacks()
 player.attack_doppelganger()
+
+# The beginning of the end
+print('\nWith the {0.name} dead, you sheath your sword, breathing heavily.'.format(a_doppelganger))
+sleep(3)
+print('\nThe single door in the center of the room opens, the bright light pours through the door again.')
+sleep(3)
+print('\nYou walk toward the glowing door, the light overcoming your entire body.\nAs you enter the light '
+      'you hear a gentle voice:')
+sleep(3)
+print('\n"You have done well to get to the end, my friend. You\'ve been in this dungeon for quite some time.'
+      '\nBut now you are done. Your treasure is to choose your path from the four laid out before you.'
+      '\nI do not know where each path will lead you, but I hope it\'s something good."')
+
+
+# The various endings for the game given at random
+def endings():
+    ending_choice = int(input('\nWhich path will you take?\n1) Path 1\n2) Path 2\n3)Path 3\nPath 4'))
+    if ending_choice == 1:
+        # Ending 1
+        print()
+    elif ending_choice == 2:
+        # Ending 2
+        print()
+    elif ending_choice == 3:
+        # Ending 3
+        print()
+    else:
+        # Ending 4
+        print()
+    # A loop to prompt again for the second_branch_decision() if the player inputs something wrong
+    while ending_choice != 1 or 2 or 3 or 4:
+        print('\nIncorrect input. Enter "1" for Path 1\n"2" for Path 2\n"3" for Path 3\n"4" for Path 4')
+        endings()
+        break
+
+
+endings()
