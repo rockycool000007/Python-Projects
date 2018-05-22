@@ -8,6 +8,9 @@ This project is a text-base adventure game where you fight monsters in various r
 
 ### Changes / Updates
 
+* 5/21/18:
+   - Started working on the ending for the game, which will give the player a choice from four different endings. It gives reply value.
+
 * 5/20/18:
    - I created the validation and/or tests for the `else` statements when the player had to make a decision to catch if the player inputs an invalid number. I did this by creating functions for the two room branches and using a `while` loop in the `else` statement to catch wrong inputs.
 
